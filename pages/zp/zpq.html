@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片墙</title>
+    <style>
+        .photo-frame {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            /* 设置照片统一宽度 */
+            object-fit: cover;
+            /* 等比缩放填充 */
+        }
+
+        #imageContainer {
+            display: grid;
+            /* 使用网格布局 */
+            grid-template-columns: repeat(auto-fill, 220px);
+            /* 每列宽度220px，自动换行 */
+            gap: 20px;
+            /* 图片之间的间隔 */
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="uploadImage()">上传照片</button>
+    <div id="imageContainer"></div>
+    <a href="../../index.html">返回首页</a>
+    <script>
+        function uploadImage() {
+            var input = document.getElementById('imageInput');
+            var files = input.files;
+            var imageContainer = document.getElementById('imageContainer');
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var img = document.createElement("img");
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                    img.className = "photo-frame";
+                    var info = document.createElement('p');
+                    info.textContent = '名称: ' + file.name + ', 大小: ' + (file.size / 1024).toFixed(2) + 'KB, 类型: ' + file.type;
+                    imageContainer.appendChild(img);
+                    imageContainer.appendChild(info);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

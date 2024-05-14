@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LXL's Website</title>
+    <link rel="shortcut icon" href="./icons/icon.png" type="image/x-icon">
+    <style>
+        /* Reset default padding and margin for all elements */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for the card */
+        .card {
+
+            width: 100%;
+            height: 550px;
+            perspective: 1000px;
+            /* 添加透视效果 */
+            position: relative;
+            transition: transform 0.5s;
+            /* 添加过渡效果 */
+        }
+
+        /* Style for the card content */
+        .card-content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            /* 隐藏背面 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #dc4646;
+            transform-style: preserve-3d;
+            /* 保持3D效果 */
+            transition: transform 0.5s;
+            /* 添加过渡效果 */
+        }
+
+        /* Rotate the card on hover */
+        .card:hover {
+            transform: rotateY(10deg);
+        }
+
+        .card:hover .card-content {
+            transform: rotateY(-10deg);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+        }
+
+        .t {
+            text-align: center;
+            margin-top: 100px;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #e8dcdc;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #d9caca;
+        }
+
+        /* Reset default padding and margin for list elements */
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for the tool list */
+        .toolList {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .toolListTitle {
+            font-size: 2em;
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        /* Style for the tool list items */
+        .toolList ul li {
+            list-style: none;
+            /* Remove default list bullets */
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            /* Add a bottom border for separation */
+        }
+
+        /* Hover effect for list items */
+        .toolList ul li:hover {
+            background-color: #e3e3e3;
+        }
+
+        /* Reset default padding and margin for list elements */
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for the tool list */
+        .toolList {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Add flexbox layout to the tool list */
+        .toolList ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /* Adjust this based on your preference */
+        }
+        .boder{
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Style for the tool list items */
+        .toolList ul li {
+            list-style: none;
+            /* Remove default list bullets */
+            width: 30%;
+            /* Adjust the width based on the number of items per row */
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            /* Add a bottom border for separation */
+            text-align: center;
+            margin-bottom: 10px;
+            /* Add some space between items */
+        }
+
+        /* Hover effect for list items */
+        .toolList ul li:hover {
+            background-color: #e3e3e3;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .toolList ul li {
+                width: 100%;
+                /* Display one item per row on smaller screens */
+            }
+        }
+
+
+        /* Style for the footer section */
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Style for the container within the footer */
+        .site-footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Center text inside the footer */
+        .site-footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boder">
+        <img src="./icons/icon-nbg-big.png" alt="LOGO">
+    </div>
+
+
+    <div class="t">
+        <h1>欢迎来到我的网站！</h1>
+        <p>Welcome to my website!</p>
+    </div>
+
+
+    <div class="toolList">
+        <p>工具箱</p>
+        <ul>
+            <li>计算器</li>
+            <li>BMI计算</li>
+            <li>下载聚合</li>
+            <li>纯色图片生成</li>
+            <li>照片墙</li>
+            <li>搜索</li>
+        </ul>
+    </div>
+
+    <div class="boder">
+        <div class="card">
+            <div class="card-content">
+                <h2>关于我</h2>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; hosted on the cloud of Gitee.</p>
+            <p>2024 | by LXL2 on Gitee.</p>
+        </div>
+    </footer>
+    <script>
+        // 获取所有工具列表项
+        const toolItems = document.querySelectorAll('.toolList ul li');
+
+        // 为每个工具项添加点击事件监听器
+        toolItems.forEach(item => {
+            item.addEventListener('click', function () {
+                if (item.textContent === '计算器') {
+                    document.location.href = './pages/jsq/jcq.html';
+                } else if (item.textContent === 'BMI计算') {
+                    document.location.href = './pages/bmi/bmi.html';
+                } else if (item.textContent === '下载聚合') {
+                    document.location.href = './pages/xz/xz.html';
+                }else if (item.textContent === '纯色图片生成') {
+                    document.location.href = './pages/tu/tu.html';
+                }else if (item.textContent === '照片墙') {
+                    document.location.href = './pages/zp/zpq.html';
+                }
+                else{
+                    document.location.href = './pages/dt/dt.html';
+                }
+            });
+        });
+        function LXL() {
+            document.location.href = './README.md';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Color Image Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            transition: background-color 0.5s;
+            margin: 0;
+            padding: 0;
+        }
+
+        input[type="color"] {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: #eee;
+            border-radius: 50%;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        input[type="color"]:hover {
+            background: #ddd;
+            transform: scale(1.05);
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        form:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>纯色图像生成器</h1>
+    <form id="colorForm">
+        <label for="color">颜色: </label>
+        <input type="color" id="color" value="#ff0000"><br><br>
+        <label for="width">宽度 (px): </label>
+        <input type="number" id="width" min="1" value="200"><br><br>
+        <label for="height">高度 (px): </label>
+        <input type="number" id="height" min="1" value="200"><br><br>
+        <button type="button" onclick="generateImage()">生成</button>
+    </form>
+    <a href="../../index.html" style="        a:hover{
+        background-color: #333;
+        color: aliceblue;
+        text-decoration: none;
+    }
+    a{
+            background-color: aliceblue;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }">返回首页</a>
+    <script>
+        function generateImage() {
+            const color = document.getElementById("color").value;
+            const width = document.getElementById("width").value;
+            const height = document.getElementById("height").value;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, width, height);
+
+            const link = document.createElement('a');
+            link.download = 'solid-color-image.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+
+</html>
